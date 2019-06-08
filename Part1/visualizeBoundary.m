@@ -1,0 +1,102 @@
+function visualizeBoundary(X, y, model1, model2, model3, model5, model4, varargin)
+%   essa função plota a fronteira de decisão não-linear 
+%   aprendida pelo SVM
+
+% Plota os dados de treinamento sobre a fonteira de decisão
+plotData(X, y)
+title('Fronteira de decisão não-linear para C=1 e sigma=0.01')
+% Realiza as predições de classificação 
+x1plot = linspace(min(X(:,1)), max(X(:,1)), 100)';
+x2plot = linspace(min(X(:,2)), max(X(:,2)), 100)';
+[X1, X2] = meshgrid(x1plot, x2plot);
+vals = zeros(size(X1));
+for i = 1:size(X1, 2)
+   this_X = [X1(:, i), X2(:, i)];
+   vals(:, i) = svmPredict(model1, this_X);
+end
+
+% Plota a frontreira aprendida pelo SVM
+hold on
+contour(X1, X2, vals, [0.5 0.5], 'b');
+hold off;
+
+%----------------------------------------------------------------------------
+figure
+plotData(X, y)
+title('Fronteira de decisão não-linear para C=1 e sigma=0.03')
+% Realiza as predições de classificação 
+x1plot = linspace(min(X(:,1)), max(X(:,1)), 100)';
+x2plot = linspace(min(X(:,2)), max(X(:,2)), 100)';
+[X1, X2] = meshgrid(x1plot, x2plot);
+vals = zeros(size(X1));
+for i = 1:size(X1, 2)
+   this_X = [X1(:, i), X2(:, i)];
+   vals(:, i) = svmPredict(model2, this_X);
+end
+
+% Plota a frontreira aprendida pelo SVM
+hold on
+contour(X1, X2, vals, [0.5 0.5], 'r');
+hold off;
+
+%----------------------------------------------------------------------------
+figure
+plotData(X, y)
+title('Fronteira de decisão não-linear para C=1 e sigma=0.1')
+% Realiza as predições de classificação 
+x1plot = linspace(min(X(:,1)), max(X(:,1)), 100)';
+x2plot = linspace(min(X(:,2)), max(X(:,2)), 100)';
+[X1, X2] = meshgrid(x1plot, x2plot);
+vals = zeros(size(X1));
+for i = 1:size(X1, 2)
+   this_X = [X1(:, i), X2(:, i)];
+   vals(:, i) = svmPredict(model3, this_X);
+end
+
+% Plota a frontreira aprendida pelo SVM
+hold on
+contour(X1, X2, vals, [0.5 0.5], 'm');
+hold off;
+
+%----------------------------------------------------------------------------
+figure
+plotData(X, y)
+title('Fronteira de decisão não-linear para C=1 e sigma=0.3')
+% Realiza as predições de classificação 
+x1plot = linspace(min(X(:,1)), max(X(:,1)), 100)';
+x2plot = linspace(min(X(:,2)), max(X(:,2)), 100)';
+[X1, X2] = meshgrid(x1plot, x2plot);
+vals = zeros(size(X1));
+for i = 1:size(X1, 2)
+   this_X = [X1(:, i), X2(:, i)];
+   vals(:, i) = svmPredict(model5, this_X);
+end
+
+% Plota a frontreira aprendida pelo SVM
+hold on
+contour(X1, X2, vals, [0.5 0.5], 'g');
+hold off;
+
+
+%----------------------------------------------------------------------------
+figure
+plotData(X, y)
+title('Fronteira de decisão não-linear para C=1 e sigma=1')
+% Realiza as predições de classificação 
+x1plot = linspace(min(X(:,1)), max(X(:,1)), 100)';
+x2plot = linspace(min(X(:,2)), max(X(:,2)), 100)';
+[X1, X2] = meshgrid(x1plot, x2plot);
+vals = zeros(size(X1));
+for i = 1:size(X1, 2)
+   this_X = [X1(:, i), X2(:, i)];
+   vals(:, i) = svmPredict(model4, this_X);
+end
+
+% Plota a frontreira aprendida pelo SVM
+hold on
+contour(X1, X2, vals, [0.5 0.5], 'y');
+hold off;
+
+
+endfunction
+
